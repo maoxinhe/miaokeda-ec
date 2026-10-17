@@ -16,16 +16,8 @@ html, body {
   height: 100%;
   font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
   color: var(--text);
-  background: #fff url('../../assets/bg.webp') center/cover no-repeat fixed;
+  background: var(--bg);
   overflow: hidden;
-}
-
-/* 毛玻璃通用类 */
-.glass {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(14px) saturate(1.5);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 /* ---------- 标签栏 ---------- */
@@ -35,10 +27,8 @@ html, body {
   gap: 12px;
   height: 46px;
   padding: 0 14px;
-  background: rgba(253, 234, 241, 0.5);
-  backdrop-filter: blur(14px) saturate(1.5);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #fdeaf1, #fdf5f8);
+  border-bottom: 1px solid var(--border);
 }
 
 .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
@@ -69,10 +59,8 @@ html, body {
 .toolbar {
   display: flex; align-items: center; gap: 10px;
   padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(14px) saturate(1.5);
-  -webkit-backdrop-filter: blur(14px) saturate(1.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: #fff;
+  border-bottom: 1px solid var(--border);
 }
 .nav-btns { display: flex; gap: 2px; }
 .tb-btn {
@@ -89,11 +77,7 @@ html, body {
 .address-box {
   flex: 1; display: flex; align-items: center; gap: 6px;
   height: 36px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 18px;
+  background: #f4f4f7; border: 1px solid transparent; border-radius: 18px;
   padding: 0 14px;
   transition: border-color .15s, background .15s;
 }
@@ -112,29 +96,26 @@ html, body {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px;
-  background: transparent;
+  background: linear-gradient(180deg, #fdf5f8 0%, #ffffff 60%);
   padding: 20px;
 }
-.home-logo { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(242,132,160,.35); backdrop-filter: blur(4px); }
-.home-title { font-size: 26px; font-weight: 800; color: #fff; letter-spacing: 1px; text-shadow: 0 2px 12px rgba(0,0,0,.3); }
-.home-sub { font-size: 13.5px; color: rgba(255,255,255,.9); margin-bottom: 14px; text-shadow: 0 1px 6px rgba(0,0,0,.3); }
+.home-logo { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 24px rgba(242,132,160,.25); }
+.home-title { font-size: 26px; font-weight: 800; color: var(--brand-deep); letter-spacing: 1px; }
+.home-sub { font-size: 13.5px; color: var(--text-soft); margin-bottom: 14px; }
 
 .home-search {
   display: flex; align-items: center; gap: 8px;
   width: min(560px, 92%);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(16px) saturate(1.5);
-  -webkit-backdrop-filter: blur(16px) saturate(1.5);
-  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: #fff;
+  border: 1.5px solid var(--brand);
   border-radius: 24px;
   padding: 8px 8px 8px 18px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  box-shadow: 0 6px 20px rgba(242,132,160,.18);
 }
 .home-search-input {
   flex: 1; border: none; outline: none;
   font-size: 14px; color: var(--text); background: transparent;
 }
-.home-search-input::placeholder { color: rgba(60,60,60,.6); }
 .home-search-btn {
   flex-shrink: 0; border: none; cursor: pointer;
   background: linear-gradient(135deg, var(--brand), var(--brand-deep));
@@ -142,7 +123,7 @@ html, body {
   padding: 8px 18px; border-radius: 18px;
 }
 .home-search-btn:hover { filter: brightness(1.05); }
-.home-hint { font-size: 12px; color: rgba(255,255,255,.85); margin-top: 18px; text-shadow: 0 1px 4px rgba(0,0,0,.3); }
+.home-hint { font-size: 12px; color: var(--text-soft); margin-top: 18px; }
 
 .page-view {
   position: absolute; inset: 0;
@@ -156,22 +137,18 @@ html, body {
   display: flex; align-items: center; justify-content: center;
   z-index: 9999;
 }
+.cloud-modal[hidden] { display: none; }
 .cloud-panel {
   width: 380px; max-width: 92vw;
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px) saturate(1.6);
-  -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0,0,0,.2);
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
   overflow: hidden;
 }
 .cloud-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 16px 20px;
-  background: rgba(253, 234, 241, 0.5);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #fdeaf1, #fdf5f8);
+  border-bottom: 1px solid var(--border);
 }
 .cloud-title {
   display: flex; align-items: center; gap: 6px;
