@@ -1,0 +1,47 @@
+{
+  "name": "miaokeda-ec",
+  "productName": "喵科大EC",
+  "version": "1.0.0",
+  "description": "喵科大EC 便携品牌浏览器（Electron + Chromium，跨平台免安装）",
+  "main": "src/main/index.js",
+  "author": "miaokeda",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "start:portable": "electron . --portable",
+    "pack:linux": "bash scripts/build-linux.sh",
+    "pack:win": "bash scripts/build-win.sh"
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "material-icons": "^1.13.14"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "wrangler": "^4.151.1"
+  },
+  "build": {
+    "appId": "com.miaokeda.ec",
+    "productName": "喵科大EC",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "assets/icon.ico",
+      "sign": false,
+      "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png",
+      "category": "Network"
+    }
+  }
+}

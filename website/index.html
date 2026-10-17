@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>喵科大EC · 轻巧便携的品牌浏览器</title>
+  <link rel="icon" href="assets/icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar glass">
+    <div class="nav-brand">
+      <img src="assets/icon.png" alt="喵科大EC" class="nav-logo" />
+      <span class="nav-name">喵科大EC</span>
+      <span class="nav-tag">便携版</span>
+    </div>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#screenshots">截图</a>
+      <a href="#cloud">云端</a>
+      <a href="#download" class="nav-download">下载</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-card glass">
+      <img src="assets/icon.png" alt="喵科大EC" class="hero-logo" />
+      <h1 class="hero-title">喵科大EC</h1>
+      <p class="hero-sub">轻巧 · 便携 · 即开即用的品牌浏览器</p>
+      <p class="hero-desc">基于 Chromium 内核，整个文件夹放进 U 盘，到哪台电脑都是你的浏览器。云端登录同步配置，启动即上报版本。</p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary">立即下载</a>
+        <a href="#features" class="btn btn-ghost">了解功能</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section id="features" class="section">
+    <h2 class="section-title">为什么选择喵科大EC</h2>
+    <div class="feature-grid">
+      <div class="feature-card glass">
+        <div class="feature-icon">📦</div>
+        <h3>免安装便携</h3>
+        <p>绿色免安装，设置、历史、缓存全部跟随程序目录，拷进 U 盘即开即用。</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">⚡</div>
+        <h3>Chromium 内核</h3>
+        <p>基于 Chrome 同源的 Chromium 内核，网页兼容性和渲染速度有保障。</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">☁️</div>
+        <h3>云端配置同步</h3>
+        <p>登录账号后，书签、设置、主题、主页自动从云端下发，换设备也不丢。</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🎨</div>
+        <h3>品牌定制</h3>
+        <p>名称、Logo、默认主页、UI 皮肤全部可定制，打造属于你的浏览器。</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🔔</div>
+        <h3>版本更新检测</h3>
+        <p>启动时自动向云端上报版本，实时判断是否有更新，不再错过新版本。</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">✨</div>
+        <h3>毛玻璃美学</h3>
+        <p>Google Material 圆角图标 + 毛玻璃界面，樱花背景，颜值在线。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 截图展示 -->
+  <section id="screenshots" class="section">
+    <h2 class="section-title">界面预览</h2>
+    <div class="screenshot-grid">
+      <div class="screenshot-card glass">
+        <div class="screenshot-placeholder">
+          <span>主页 · 樱花背景 + 毛玻璃搜索</span>
+        </div>
+      </div>
+      <div class="screenshot-card glass">
+        <div class="screenshot-placeholder">
+          <span>云端登录 · 配置一键同步</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 云端 -->
+  <section id="cloud" class="section">
+    <h2 class="section-title">独立云端架构</h2>
+    <div class="cloud-card glass">
+      <div class="cloud-flow">
+        <div class="cloud-step"><span class="cloud-num">1</span><b>启动上报</b><p>浏览器启动时自动向云端报告版本</p></div>
+        <div class="cloud-arrow">→</div>
+        <div class="cloud-step"><span class="cloud-num">2</span><b>云端判断</b><p>云端实时对比版本，判断是否更新</p></div>
+        <div class="cloud-arrow">→</div>
+        <div class="cloud-step"><span class="cloud-num">3</span><b>登录同步</b><p>账号登录后下发书签、设置、主题</p></div>
+        <div class="cloud-arrow">→</div>
+        <div class="cloud-step"><span class="cloud-num">4</span><b>推送更新</b><p>新版本发布后云端推送提醒</p></div>
+      </div>
+      <p class="cloud-note">云端部署于 Cloudflare Worker + KV，独立一套，不与其他系统耦合。</p>
+    </div>
+  </section>
+
+  <!-- 下载 -->
+  <section id="download" class="section">
+    <h2 class="section-title">立即下载</h2>
+    <div class="download-grid">
+      <a href="#" class="download-card glass">
+        <div class="download-icon">🪟</div>
+        <h3>Windows 便携版</h3>
+        <p>免安装 exe · 双击即用</p>
+        <span class="download-btn">下载 .exe</span>
+      </a>
+      <a href="#" class="download-card glass">
+        <div class="download-icon">🐧</div>
+        <h3>Linux 版</h3>
+        <p>AppImage · 免安装</p>
+        <span class="download-btn">下载 .AppImage</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer glass">
+    <p>喵科大EC · 便携品牌浏览器</p>
+    <p class="footer-sub">基于 Electron + Chromium · 云端 Cloudflare Worker</p>
+  </footer>
+</body>
+</html>

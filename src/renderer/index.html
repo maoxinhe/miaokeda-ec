@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.mcy.camzy.uno http://127.0.0.1:* http://localhost:*; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <title>喵科大EC</title>
+  <link rel="stylesheet" href="fonts/round.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 标签栏 -->
+  <div class="tab-bar">
+    <div class="brand">
+      <img class="brand-logo" src="../../assets/icon.png" alt="喵科大EC" />
+      <span class="brand-name">喵科大EC</span>
+      <span class="brand-tag">便携版</span>
+    </div>
+    <div class="tab-item" id="currentTab">
+      <span class="tab-favicon" id="tabFavicon"></span>
+      <span class="tab-title" id="tabTitle">新标签页</span>
+    </div>
+  </div>
+
+  <!-- 工具条 -->
+  <div class="toolbar">
+    <div class="nav-btns">
+      <button class="tb-btn" id="btnBack" title="后退"><i class="material-icons-round">arrow_back</i></button>
+      <button class="tb-btn" id="btnForward" title="前进"><i class="material-icons-round">arrow_forward</i></button>
+      <button class="tb-btn" id="btnReload" title="刷新"><i class="material-icons-round">refresh</i></button>
+      <button class="tb-btn" id="btnHome" title="主页"><i class="material-icons-round">home</i></button>
+    </div>
+    <div class="address-box">
+      <span class="address-secure" id="addrSecure"><i class="material-icons-round">lock</i></span>
+      <input class="address-input" id="addressInput" type="text" spellcheck="false"
+             placeholder="输入网址或搜索…" autocomplete="off" />
+    </div>
+    <div class="tool-right">
+      <button class="tb-btn" id="btnCloud" title="云端账号"><i class="material-icons-round">cloud</i></button>
+      <button class="tb-btn" id="btnHomeShort" title="回到主页"><i class="material-icons-round">home</i></button>
+    </div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="content">
+    <!-- 品牌欢迎层（默认显示） -->
+    <div class="home-overlay" id="homeOverlay">
+      <img class="home-logo" src="../../assets/icon.png" alt="喵科大EC" />
+      <div class="home-title">喵科大EC</div>
+      <div class="home-sub">轻巧 · 便携 · 即开即用</div>
+      <div class="home-search">
+        <input class="home-search-input" id="homeSearch" type="text"
+               placeholder="输入网址或搜索关键词…" spellcheck="false" autocomplete="off" />
+        <button class="home-search-btn" id="homeSearchBtn">前往</button>
+      </div>
+      <div class="home-hint">把整个文件夹放进 U 盘，到哪台电脑都是你的浏览器</div>
+    </div>
+
+    <!-- 网页视图 -->
+    <webview class="page-view" id="mainView" hidden></webview>
+  </div>
+
+  <!-- 云端登录面板 -->
+  <div class="cloud-modal" id="cloudModal" hidden>
+    <div class="cloud-panel">
+      <div class="cloud-header">
+        <span class="cloud-title"><i class="material-icons-round">cloud</i> 喵科大EC 云端</span>
+        <button class="cloud-close" id="cloudClose">×</button>
+      </div>
+      <div class="cloud-tabs" id="cloudTabs">
+        <button class="cloud-tab active" data-tab="login">登录</button>
+        <button class="cloud-tab" data-tab="register">注册</button>
+      </div>
+      <div class="cloud-body" id="cloudBody"></div>
+      <div class="cloud-status" id="cloudStatus"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
