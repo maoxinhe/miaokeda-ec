@@ -10,7 +10,9 @@
     "start": "electron .",
     "start:portable": "electron . --portable",
     "pack:linux": "bash scripts/build-linux.sh",
-    "pack:win": "bash scripts/build-win.sh"
+    "pack:win": "bash scripts/build-win.sh",
+    "build:win": "electron-builder --win portable --x64",
+    "build:linux": "electron-builder --linux AppImage --x64"
   },
   "dependencies": {
     "electron-store": "^8.2.0",
