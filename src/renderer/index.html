@@ -35,6 +35,7 @@
              placeholder="输入网址或搜索…" autocomplete="off" />
     </div>
     <div class="tool-right">
+      <button class="tb-btn" id="btnWarp" title="Cloudflare WARP"><i class="material-icons-round">shield</i></button>
       <button class="tb-btn" id="btnCloud" title="云端账号"><i class="material-icons-round">cloud</i></button>
       <button class="tb-btn" id="btnHomeShort" title="回到主页"><i class="material-icons-round">home</i></button>
     </div>
@@ -72,6 +73,31 @@
       </div>
       <div class="cloud-body" id="cloudBody"></div>
       <div class="cloud-status" id="cloudStatus"></div>
+    </div>
+  </div>
+
+  <!-- WARP 控制面板 -->
+  <div class="cloud-modal" id="warpModal" hidden>
+    <div class="cloud-panel warp-panel">
+      <div class="cloud-header">
+        <span class="cloud-title"><i class="material-icons-round">shield</i> Cloudflare WARP</span>
+        <button class="cloud-close" id="warpClose">×</button>
+      </div>
+      <div class="warp-body" id="warpBody">
+        <div class="warp-status-row">
+          <div class="warp-status-item">
+            <span class="warp-label">加密 DNS (DoH)</span>
+            <span class="warp-value warp-on" id="warpDohStatus">已启用</span>
+          </div>
+          <div class="warp-status-item">
+            <span class="warp-label">WARP 代理</span>
+            <span class="warp-value" id="warpProxyStatus">检测中…</span>
+          </div>
+        </div>
+        <div class="warp-ip" id="warpIpInfo"></div>
+        <button class="warp-toggle" id="warpToggle">连接 WARP</button>
+        <div class="warp-hint" id="warpHint"></div>
+      </div>
     </div>
   </div>
 

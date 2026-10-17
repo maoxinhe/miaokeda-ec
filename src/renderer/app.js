@@ -254,6 +254,75 @@
   cloudModal.addEventListener('click', (e) => { if (e.target === cloudModal) closeCloud() })
   cloudTabs.addEventListener('click', (e) => { const t = e.target.closest('.cloud-tab'); if (t) switchTab(t.dataset.tab) })
 
+  // ------------------------------------------------------------------
+  // Cloudflare WARP 控制
+  // ------------------------------------------------------------------
+  const btnWarp = document.getElementById('btnWarp')
+  const warpModal = document.getElementById('warpModal')
+  const warpClose = document.getElementById('warpClose')
+  const warpDohStatus = document.getElementById('warpDohStatus')
+  const warpProxyStatus = document.getElementById('warpProxyStatus')
+  const warpIpInfo = document.getElementById('warpIpInfo')
+  const warpToggle = document.getElementById('warpToggle')
+  const warpHint = document.getElementById('warpHint')
+
+  let warpState = { proxyAvailable: false, proxyActive: false }
+
+  async function refreshWarpStatus() {
+    try {
+      const s = await window.miaokeda.warp.status()
+      warpState = s
+      warpDohStatus.textContent = s.dohEnabled ? '已启用 · 1.1.1.1' : '未启用'
+      warpDohStatus.className = 'warp-value ' + (s.dohEnabled ? 'warp-on' : 'warp-off')
+      if (s.proxyActive) {
+        warpProxyStatus.textContent = '已连接'
+        warpProxyStatus.className = 'warp-value warp-active'
+        warpToggle.textContent = '断开 WARP'
+        warpToggle.classList.add('connected')
+        warpHint.innerHTML = '流量已通过 Cloudflare WARP 加密隧道'
+      } else if (s.proxyAvailable) {
+        warpProxyStatus.textContent = '可用 · 未连接'
+        warpProxyStatus.className = 'warp-value warp-on'
+        warpToggle.textContent = '连接 WARP'
+        warpToggle.classList.remove('connected')
+        warpToggle.disabled = false
+        warpHint.innerHTML = '检测到 WARP 客户端，点击连接启用加密代理'
+      } else {
+        warpProxyStatus.textContent = '未检测到客户端'
+        warpProxyStatus.className = 'warp-value warp-off'
+        warpToggle.textContent = '连接 WARP'
+        warpToggle.classList.remove('connected')
+        warpToggle.disabled = true
+        warpHint.innerHTML = '请先安装 <a href="https://1.1.1.1" target="_blank">Cloudflare WARP 客户端</a> 并启动，代理端口 127.0.0.1:40000'
+      }
+    } catch (e) {
+      warpProxyStatus.textContent = '状态未知'
+    }
+  }
+
+  btnWarp.addEventListener('click', () => {
+    warpModal.hidden = false
+    refreshWarpStatus()
+  })
+  warpClose.addEventListener('click', () => { warpModal.hidden = true })
+  warpModal.addEventListener('click', (e) => { if (e.target === warpModal) warpModal.hidden = true })
+
+  warpToggle.addEventListener('click', async () => {
+    warpToggle.disabled = true
+    if (warpState.proxyActive) {
+      const r = await window.miaokeda.warp.disconnect()
+      if (r.ok) warpToggle.textContent = '已断开'
+    } else {
+      warpToggle.textContent = '连接中…'
+      const r = await window.miaokeda.warp.connect()
+      if (!r.ok) {
+        warpHint.textContent = r.error || '连接失败'
+        warpHint.style.color = '#d9534f'
+      }
+    }
+    setTimeout(refreshWarpStatus, 500)
+  })
+
   // 启动：上报版本 + 有 token 则自动拉取云端配置
   reportVersion()
   if (getToken()) fetchConfig()

@@ -2,9 +2,10 @@
  * 喵科大EC · 便携品牌浏览器 — 主进程
  * 基于 Electron + Chromium 内核，支持便携模式（免安装、数据跟随程序目录）
  */
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, net } = require('electron')
 const path = require('path')
 const fs = require('fs')
+const { session } = require('electron')
 
 const PRODUCT_NAME = '喵科大EC'
 const APP_VERSION = app.getVersion()
@@ -106,23 +107,29 @@ function createWindow() {
     })
   }
 
-  // 演示模式：自动展示 主页→打开云端面板→登录→显示云端配置→退出（仅 MIAOKEDA_DEMO=1）
+  // 演示模式：MIAOKEDA_DEMO_PANEL=warp 打开 WARP 面板，否则展示云端登录（仅 MIAOKEDA_DEMO=1）
   if (process.env.MIAOKEDA_DEMO === '1') {
     win.webContents.once('did-finish-load', () => {
       console.log('DEMO_READY')
       const run = (delay, code) => setTimeout(() => {
         win.webContents.executeJavaScript(code).catch((e) => console.error('DEMO_ERR', e))
       }, delay)
-      // t=2s 打开云端登录面板
-      run(2000, `document.getElementById('btnCloud').click()`)
-      // t=4s 填写用户名密码并点击登录
-      run(4000, `(function(){
-        document.getElementById('cloudUsername').value='demo';
-        document.getElementById('cloudPassword').value='demo123';
-        document.getElementById('cloudSubmit').click();
-      })()`)
-      // t=11s 退出
-      setTimeout(() => app.quit(), 11000)
+      if (process.env.MIAOKEDA_DEMO_PANEL === 'warp') {
+        // t=2s 打开 WARP 面板
+        run(2000, `document.getElementById('btnWarp').click()`)
+        setTimeout(() => app.quit(), 8000)
+      } else {
+        // t=2s 打开云端登录面板
+        run(2000, `document.getElementById('btnCloud').click()`)
+        // t=4s 填写用户名密码并点击登录
+        run(4000, `(function(){
+          document.getElementById('cloudUsername').value='demo';
+          document.getElementById('cloudPassword').value='demo123';
+          document.getElementById('cloudSubmit').click();
+        })()`)
+        // t=11s 退出
+        setTimeout(() => app.quit(), 11000)
+      }
     })
   }
 
@@ -146,6 +153,88 @@ app.whenReady().then(() => {
     version: APP_VERSION,
     portable: isPortable
   }))
+
+  // -------------------------------------------------------------------------
+  // Cloudflare WARP 集成：DoH 加密 DNS + 本地代理检测与接入
+  // -------------------------------------------------------------------------
+  const WARP_PROXY_HOST = '127.0.0.1'
+  const WARP_PROXY_PORT = 40000 // WARP 客户端 proxy 模式默认 SOCKS5 端口
+
+  // 启用 Cloudflare DoH（1.1.1.1），防止 DNS 劫持与监听
+  try {
+    app.configureHostResolver({
+      secureDnsMode: 'secure',
+      secureDnsServers: ['https://cloudflare-dns.com/dns-query']
+    })
+    if (process.env.MIAOKEDA_VERBOSE) console.log('[DoH] Cloudflare 1.1.1.1 已启用')
+  } catch (e) {
+    console.error('[DoH] 配置失败:', e.message)
+  }
+
+  // 检测本地 WARP 代理端口是否开放
+  async function detectWarpProxy() {
+    return new Promise((resolve) => {
+      const req = net.request({
+        method: 'GET',
+        url: `http://${WARP_PROXY_HOST}:${WARP_PROXY_PORT}`,
+        timeout: 1500
+      })
+      req.on('response', () => resolve(true))
+      req.on('error', () => resolve(false))
+      req.on('timeout', () => { req.abort(); resolve(false) })
+      req.end()
+    })
+  }
+
+  ipcMain.handle('warp:status', async () => {
+    const proxyAvailable = await detectWarpProxy()
+    const cfg = readConfig()
+    return {
+      dohEnabled: true,
+      dohServer: 'https://cloudflare-dns.com/dns-query',
+      proxyAvailable,
+      proxyActive: !!cfg.warpProxyActive,
+      proxyHost: WARP_PROXY_HOST,
+      proxyPort: WARP_PROXY_PORT
+    }
+  })
+
+  ipcMain.handle('warp:connect', async () => {
+    const available = await detectWarpProxy()
+    if (!available) return { ok: false, error: '未检测到 WARP 客户端，请先安装并启动 Cloudflare WARP' }
+    try {
+      await session.defaultSession.setProxy({
+        proxyRules: `socks5://${WARP_PROXY_HOST}:${WARP_PROXY_PORT}`
+      })
+      writeConfig({ warpProxyActive: true })
+      return { ok: true }
+    } catch (e) {
+      return { ok: false, error: e.message }
+    }
+  })
+
+  ipcMain.handle('warp:disconnect', async () => {
+    try {
+      await session.defaultSession.setProxy({ proxyRules: '' })
+      writeConfig({ warpProxyActive: false })
+      return { ok: true }
+    } catch (e) {
+      return { ok: false, error: e.message }
+    }
+  })
+
+  // 启动时如果之前开启了 WARP 代理，自动恢复
+  const cfg = readConfig()
+  if (cfg.warpProxyActive) {
+    detectWarpProxy().then((available) => {
+      if (available) {
+        session.defaultSession.setProxy({ proxyRules: `socks5://${WARP_PROXY_HOST}:${WARP_PROXY_PORT}` })
+        console.log('[WARP] 已恢复代理连接')
+      } else {
+        writeConfig({ warpProxyActive: false })
+      }
+    })
+  }
 
   createWindow()
 

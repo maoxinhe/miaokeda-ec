@@ -17,4 +17,10 @@ contextBridge.exposeInMainWorld('miaokeda', {
     paths: cloudConfig.CLOUD_API_PATHS,
     reportOnStartup: cloudConfig.VERSION_REPORT_ON_STARTUP,
   },
+  // Cloudflare WARP 集成
+  warp: {
+    status: () => ipcRenderer.invoke('warp:status'),
+    connect: () => ipcRenderer.invoke('warp:connect'),
+    disconnect: () => ipcRenderer.invoke('warp:disconnect'),
+  },
 })
