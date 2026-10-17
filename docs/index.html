@@ -3,161 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>喵科大EC · 便携浏览器，为移动而生</title>
-  <meta name="description" content="喵科大EC是一款基于Chromium内核的免安装便携浏览器，U盘即开即用，云端同步配置，跨平台Windows/Linux。" />
+  <title>喵科大EC - 企业级便携浏览器 | 免安装 · 跨平台 · 云端同步</title>
+  <meta name="description" content="喵科大EC是基于Chromium内核的企业级便携浏览器，免安装部署，跨平台一致体验，云端配置同步，版本智能更新，为移动办公与安全浏览而生。" />
   <link rel="icon" href="assets/icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- 导航 -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <div class="nav-brand">
-        <img src="assets/icon.png" alt="喵科大EC" class="nav-logo" />
-        <span class="nav-name">喵科大EC</span>
+  <!-- 顶部导航 -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/icon.png" alt="喵科大EC" class="brand-logo" />
+        <span class="brand-name">喵科大EC</span>
+        <span class="brand-ver">v1.0</span>
       </div>
-      <div class="nav-links">
-        <a href="#features">功能</a>
-        <a href="#screenshots">预览</a>
-        <a href="#cloud">云端</a>
-        <a href="#download" class="nav-cta">下载</a>
-      </div>
+      <nav class="nav">
+        <a href="#features">产品功能</a>
+        <a href="#screenshots">界面预览</a>
+        <a href="#cloud">云端服务</a>
+        <a href="#download">下载中心</a>
+      </nav>
+      <a href="#download" class="btn btn-primary btn-sm">立即下载</a>
     </div>
-  </nav>
+  </header>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-grid">
+    <div class="container hero-inner">
       <div class="hero-text">
-        <div class="hero-label">PORTABLE BROWSER · v1.0</div>
-        <h1 class="hero-title">
-          你的浏览器<br/>
-          <span class="accent">随身携带</span>
-        </h1>
-        <p class="hero-desc">
-          基于 Chromium 内核的免安装便携浏览器。无需安装，不写注册表，
-          整个目录放进 U 盘，插入任何电脑即可运行。云端账号同步配置，跨设备无缝衔接。
+        <h1 class="hero-title">企业级便携浏览器<br/>为移动办公而生</h1>
+        <p class="hero-sub">
+          基于 Chromium 内核，免安装部署，跨平台一致体验。云端账号体系实现配置同步与版本管理，
+          为企业用户提供安全、高效、可携带的浏览解决方案。
         </p>
         <div class="hero-actions">
           <a href="#download" class="btn btn-primary">免费下载</a>
-          <a href="https://github.com/maoxinhe/miaokeda-ec" target="_blank" class="btn btn-ghost">GitHub →</a>
+          <a href="https://github.com/maoxinhe/miaokeda-ec" target="_blank" class="btn btn-outline">查看源码</a>
         </div>
-        <div class="hero-meta">
+        <div class="hero-specs">
           <span>Windows 71MB</span>
-          <span class="dot-sep">·</span>
+          <span class="spec-sep"></span>
           <span>Linux 107MB</span>
-          <span class="dot-sep">·</span>
-          <span>开源 MIT</span>
+          <span class="spec-sep"></span>
+          <span>MIT 开源协议</span>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="browser-mock">
-          <div class="mock-bar">
-            <span class="mock-dot r"></span>
-            <span class="mock-dot y"></span>
-            <span class="mock-dot g"></span>
-            <span class="mock-url">miaokeda.ec</span>
+        <div class="product-frame">
+          <div class="frame-bar">
+            <span class="frame-dot"></span>
+            <span class="frame-dot"></span>
+            <span class="frame-dot"></span>
+            <span class="frame-url">miaokeda.ec</span>
           </div>
-          <img src="assets/screenshot-home.png" alt="喵科大EC浏览器" class="mock-img" />
+          <img src="assets/screenshot-home.png" alt="喵科大EC浏览器界面" class="frame-img" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 数据条 -->
-  <section class="stats">
-    <div class="stats-inner">
-      <div class="stat-item"><b>0</b><span>安装步骤</span></div>
-      <div class="stat-item"><b>2</b><span>支持平台</span></div>
-      <div class="stat-item"><b>PBKDF2</b><span>密码加密</span></div>
-      <div class="stat-item"><b>100%</b><span>开源透明</span></div>
+  <!-- 核心指标 -->
+  <section class="metrics">
+    <div class="container metrics-inner">
+      <div class="metric"><b>0</b><span>安装步骤</span></div>
+      <div class="metric"><b>2</b><span>支持平台</span></div>
+      <div class="metric"><b>PBKDF2</b><span>密码加密</span></div>
+      <div class="metric"><b>100%</b><span>开源透明</span></div>
     </div>
   </section>
 
-  <!-- 功能 -->
+  <!-- 产品功能 -->
   <section id="features" class="section">
-    <div class="section-head">
-      <span class="section-tag">FEATURES</span>
-      <h2 class="section-title">为便携而生</h2>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card reveal">
-        <div class="feature-num">01</div>
-        <h3>真正免安装</h3>
-        <p>下载即用，不写注册表，不残留系统目录。所有设置、历史、缓存跟随程序文件夹，拷走即完整环境。</p>
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">产品功能</span>
+        <h2 class="section-title">专业能力，全面覆盖</h2>
+        <p class="section-desc">从内核到云端，从部署到运维，喵科大EC提供完整的便携浏览解决方案。</p>
       </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">02</div>
-        <h3>Chromium 内核</h3>
-        <p>与 Chrome 同源渲染引擎，网页兼容性、HTML5 支持、JavaScript 性能全部拉满，熟悉的浏览体验。</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">03</div>
-        <h3>云端配置同步</h3>
-        <p>注册登录后，书签、主页、主题、设置自动从云端下发。换台电脑登录，一切如旧。</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">04</div>
-        <h3>版本自动检测</h3>
-        <p>启动时自动向云端上报版本，实时对比最新版。有更新时提醒，不再错过新功能。</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">05</div>
-        <h3>跨平台一致</h3>
-        <p>Windows 与 Linux 双平台，相同的界面、相同的配置格式、相同的便携体验。</p>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">06</div>
-        <h3>独立账号体系</h3>
-        <p>PBKDF2 + SHA-256 加盐哈希，10万次迭代加密。独立云端，不与任何第三方账号耦合。</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">📦</div>
+          <h3>免安装部署</h3>
+          <p>下载即可运行，不写注册表，不残留系统目录。所有配置与数据跟随程序目录，拷贝即完成迁移。</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">⚡</div>
+          <h3>Chromium 内核</h3>
+          <p>采用与 Chrome 同源的 Chromium 渲染引擎，确保网页兼容性与渲染性能，提供一致的浏览体验。</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">☁️</div>
+          <h3>云端配置同步</h3>
+          <p>独立账号体系，登录后自动同步书签、主页、主题与设置。跨设备登录，配置无缝衔接。</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔔</div>
+          <h3>版本智能更新</h3>
+          <p>启动时自动向云端上报版本，实时比对最新版本。有更新时及时提醒，确保安全与功能同步。</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">💻</div>
+          <h3>跨平台一致</h3>
+          <p>Windows 与 Linux 双平台支持，相同的界面设计、配置格式与便携机制，降低多平台运维成本。</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🔒</div>
+          <h3>独立安全账号</h3>
+          <p>PBKDF2 加盐哈希加密，10万次迭代。独立云端部署，不与第三方账号体系耦合，数据自主可控。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 截图 -->
-  <section id="screenshots" class="section section-dark">
-    <div class="section-head">
-      <span class="section-tag">PREVIEW</span>
-      <h2 class="section-title">界面预览</h2>
-    </div>
-    <div class="shot-grid">
-      <div class="shot-card reveal">
-        <img src="assets/screenshot-home.png" alt="主页" />
-        <div class="shot-caption"><b>主页</b><span>简洁启动页，即搜即达</span></div>
+  <!-- 界面预览 -->
+  <section id="screenshots" class="section section-gray">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">界面预览</span>
+        <h2 class="section-title">简洁高效的交互设计</h2>
+        <p class="section-desc">以下为软件实际运行截图。</p>
       </div>
-      <div class="shot-card reveal">
-        <img src="assets/screenshot-login.png" alt="云端登录" />
-        <div class="shot-caption"><b>云端登录</b><span>一键呼出，注册登录</span></div>
-      </div>
-      <div class="shot-card reveal">
-        <img src="assets/screenshot-cloud.png" alt="配置同步" />
-        <div class="shot-caption"><b>配置同步</b><span>登录后自动下发配置</span></div>
+      <div class="shot-grid">
+        <div class="shot-card reveal">
+          <div class="shot-img-wrap"><img src="assets/screenshot-home.png" alt="主页界面" /></div>
+          <div class="shot-info"><h4>主页</h4><p>简洁启动页，地址栏即搜即达</p></div>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-img-wrap"><img src="assets/screenshot-login.png" alt="云端登录" /></div>
+          <div class="shot-info"><h4>云端登录</h4><p>工具栏一键呼出，登录注册便捷</p></div>
+        </div>
+        <div class="shot-card reveal">
+          <div class="shot-img-wrap"><img src="assets/screenshot-cloud.png" alt="配置同步" /></div>
+          <div class="shot-info"><h4>配置同步</h4><p>登录后自动下发个人配置</p></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 便携模式 -->
   <section class="section">
-    <div class="portable-grid">
+    <div class="container portable-inner">
       <div class="portable-text reveal">
-        <span class="section-tag">PORTABLE</span>
-        <h2 class="section-title left">U盘一插<br/>就是你的电脑</h2>
+        <span class="section-label">便携模式</span>
+        <h2 class="section-title left">即插即用，数据随行</h2>
         <p>
-          支持 <code>--portable</code> 便携启动，用户数据自动重定向到程序旁的
-          <code>data/</code> 目录。无论放在 U 盘、移动硬盘还是同步盘，
-          书签、历史、登录状态全部跟随。
+          支持 <code>--portable</code> 便携启动参数，用户数据目录自动重定向至程序旁的
+          <code>data/</code> 文件夹。无论存放于 U 盘、移动硬盘还是同步盘，
+          书签、历史记录与登录状态均随程序一同携带。
         </p>
-        <ul class="check-list">
-          <li>不写注册表，不留系统垃圾</li>
-          <li>配置与程序同目录，拷走即迁移</li>
+        <ul class="feature-list">
+          <li>不写入注册表，无系统残留</li>
+          <li>配置与程序同目录，拷贝即迁移</li>
           <li>Windows / Linux 数据格式兼容</li>
-          <li>云端登录后跨设备自动合并</li>
+          <li>云端登录后跨设备自动合并配置</li>
         </ul>
       </div>
-      <div class="portable-code reveal">
-        <div class="code-window">
-          <div class="code-bar"><span>目录结构</span></div>
-          <pre class="code-body">喵科大EC/
+      <div class="portable-visual reveal">
+        <div class="code-panel">
+          <div class="code-panel-head">目录结构</div>
+          <pre class="code-panel-body">喵科大EC/
 ├── 喵科大EC.exe
 ├── resources/
 │   └── app.asar
@@ -171,86 +175,100 @@
     </div>
   </section>
 
-  <!-- 云端架构 -->
-  <section id="cloud" class="section section-dark">
-    <div class="section-head">
-      <span class="section-tag">CLOUD</span>
-      <h2 class="section-title">独立云端架构</h2>
-      <p class="section-sub">部署于 Cloudflare Worker + KV，全球边缘节点，低延迟高可用。</p>
-    </div>
-    <div class="cloud-flow reveal">
-      <div class="cloud-node">
-        <div class="node-num">1</div>
-        <h4>启动上报</h4>
-        <p>浏览器启动自动报告版本与平台</p>
+  <!-- 云端服务 -->
+  <section id="cloud" class="section section-gray">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">云端服务</span>
+        <h2 class="section-title">独立云端，全链路可控</h2>
+        <p class="section-desc">部署于 Cloudflare Worker + KV，全球边缘节点，低延迟高可用。</p>
       </div>
-      <div class="cloud-arrow">→</div>
-      <div class="cloud-node">
-        <div class="node-num">2</div>
-        <h4>云端判断</h4>
-        <p>实时对比版本号，判断是否更新</p>
+      <div class="cloud-flow reveal">
+        <div class="cloud-step">
+          <div class="step-num">01</div>
+          <h4>启动上报</h4>
+          <p>浏览器启动时自动向云端报告版本与平台信息</p>
+        </div>
+        <div class="cloud-line"></div>
+        <div class="cloud-step">
+          <div class="step-num">02</div>
+          <h4>云端判断</h4>
+          <p>云端实时比对版本号，判断是否需要更新</p>
+        </div>
+        <div class="cloud-line"></div>
+        <div class="cloud-step">
+          <div class="step-num">03</div>
+          <h4>登录同步</h4>
+          <p>账号验证通过后下发书签、设置与主题配置</p>
+        </div>
+        <div class="cloud-line"></div>
+        <div class="cloud-step">
+          <div class="step-num">04</div>
+          <h4>推送更新</h4>
+          <p>新版本发布后，云端自动向用户推送升级提醒</p>
+        </div>
       </div>
-      <div class="cloud-arrow">→</div>
-      <div class="cloud-node">
-        <div class="node-num">3</div>
-        <h4>登录同步</h4>
-        <p>下发书签、设置、主题等配置</p>
+      <div class="api-panel reveal">
+        <span class="api-label">API 端点</span>
+        <div class="api-list">
+          <code>POST /api/register</code>
+          <code>POST /api/login</code>
+          <code>GET /api/config</code>
+          <code>PUT /api/config</code>
+          <code>GET /api/version</code>
+          <code>POST /api/version/report</code>
+        </div>
       </div>
-      <div class="cloud-arrow">→</div>
-      <div class="cloud-node">
-        <div class="node-num">4</div>
-        <h4>推送更新</h4>
-        <p>新版本发布后自动提醒升级</p>
-      </div>
-    </div>
-    <div class="api-row reveal">
-      <code>POST /api/register</code>
-      <code>POST /api/login</code>
-      <code>GET /api/config</code>
-      <code>PUT /api/config</code>
-      <code>GET /api/version</code>
-      <code>POST /api/version/report</code>
     </div>
   </section>
 
-  <!-- 下载 -->
+  <!-- 下载中心 -->
   <section id="download" class="section">
-    <div class="section-head">
-      <span class="section-tag">DOWNLOAD</span>
-      <h2 class="section-title">立即开始</h2>
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">下载中心</span>
+        <h2 class="section-title">选择适用平台</h2>
+        <p class="section-desc">全部版本免安装，下载后即可运行。</p>
+      </div>
+      <div class="download-grid">
+        <a href="https://github.com/maoxinhe/miaokeda-ec/releases/download/v1.0.0/MiaoKeDaEC_261017_x64_1.0.0.exe" class="download-card reveal" target="_blank">
+          <div class="dl-icon">🪟</div>
+          <h3>Windows</h3>
+          <p class="dl-meta">便携版 · 71MB · x64</p>
+          <p class="dl-desc">支持 Windows 10 / 11，双击即可运行</p>
+          <span class="dl-btn">下载 .exe</span>
+        </a>
+        <a href="https://github.com/maoxinhe/miaokeda-ec/releases/download/v1.0.0/MiaoKeDaEC-1.0.0.AppImage" class="download-card reveal" target="_blank">
+          <div class="dl-icon">🐧</div>
+          <h3>Linux</h3>
+          <p class="dl-meta">AppImage · 107MB · x64</p>
+          <p class="dl-desc">主流发行版通用，添加执行权限后运行</p>
+          <span class="dl-btn">下载 .AppImage</span>
+        </a>
+      </div>
+      <p class="download-note">所有版本均托管于 <a href="https://github.com/maoxinhe/miaokeda-ec/releases" target="_blank">GitHub Release</a>，可校验 SHA-256 摘要。</p>
     </div>
-    <div class="dl-grid">
-      <a href="https://github.com/maoxinhe/miaokeda-ec/releases/download/v1.0.0/MiaoKeDaEC_261017_x64_1.0.0.exe" class="dl-card reveal" target="_blank">
-        <div class="dl-os">Windows</div>
-        <div class="dl-size">便携版 · 71MB · x64</div>
-        <div class="dl-btn">下载 .exe</div>
-      </a>
-      <a href="https://github.com/maoxinhe/miaokeda-ec/releases/download/v1.0.0/MiaoKeDaEC-1.0.0.AppImage" class="dl-card reveal" target="_blank">
-        <div class="dl-os">Linux</div>
-        <div class="dl-size">AppImage · 107MB · x64</div>
-        <div class="dl-btn">下载 .AppImage</div>
-      </a>
-    </div>
-    <p class="dl-note">所有版本托管于 <a href="https://github.com/maoxinhe/miaokeda-ec/releases" target="_blank">GitHub Release</a></p>
   </section>
 
   <!-- 页脚 -->
   <footer class="footer">
-    <div class="footer-inner">
+    <div class="container footer-inner">
       <div class="footer-brand">
         <img src="assets/icon.png" alt="喵科大EC" class="footer-logo" />
         <div>
           <div class="footer-name">喵科大EC</div>
-          <div class="footer-slogan">Portable Browser</div>
+          <div class="footer-slogan">企业级便携浏览器</div>
         </div>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/maoxinhe/miaokeda-ec" target="_blank">GitHub</a>
-        <a href="https://github.com/maoxinhe/miaokeda-ec/releases" target="_blank">Releases</a>
-        <a href="https://api.mcy.camzy.uno/api/health" target="_blank">API Health</a>
+        <a href="https://github.com/maoxinhe/miaokeda-ec" target="_blank">GitHub 仓库</a>
+        <a href="https://github.com/maoxinhe/miaokeda-ec/releases" target="_blank">版本发布</a>
+        <a href="https://api.mcy.camzy.uno/api/health" target="_blank">服务状态</a>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 喵科大EC · Electron + Chromium · Cloudflare Worker</div>
+    <div class="footer-bottom">
+      <div class="container">© 2026 喵科大EC · Electron + Chromium · Cloudflare Worker</div>
+    </div>
   </footer>
 
   <script>
@@ -266,12 +284,6 @@
         });
       }, { threshold: 0.1 });
       els.forEach(function(el){ io.observe(el); });
-    })();
-    (function(){
-      var nav = document.getElementById('navbar');
-      window.addEventListener('scroll', function(){
-        nav.classList.toggle('scrolled', window.scrollY > 20);
-      });
     })();
   </script>
 </body>
