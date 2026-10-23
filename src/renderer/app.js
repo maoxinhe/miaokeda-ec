@@ -323,6 +323,16 @@
     setTimeout(refreshWarpStatus, 500)
   })
 
+  // ------------------------------------------------------------------
+  // 无边框窗口三色球控制
+  // ------------------------------------------------------------------
+  const tlClose = document.getElementById('tlClose')
+  const tlMin = document.getElementById('tlMin')
+  const tlMax = document.getElementById('tlMax')
+  tlClose.addEventListener('click', () => window.miaokeda?.window?.close())
+  tlMin.addEventListener('click', () => window.miaokeda?.window?.minimize())
+  tlMax.addEventListener('click', () => window.miaokeda?.window?.maximizeToggle())
+
   // 启动：上报版本 + 有 token 则自动拉取云端配置
   reportVersion()
   if (getToken()) fetchConfig()

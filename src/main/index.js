@@ -63,6 +63,7 @@ function createWindow() {
     minWidth: 900,
     minHeight: 620,
     title: PRODUCT_NAME,
+    frame: false, // 去掉系统标题栏，使用自定义三色球控制（Safari/macOS 风格）
     backgroundColor: '#fdf5f8',
     autoHideMenuBar: true,
     icon: path.join(__dirname, '../../assets/icon.png'),
@@ -146,6 +147,17 @@ app.whenReady().then(() => {
   // 配置 IPC
   ipcMain.handle('config:get', () => readConfig())
   ipcMain.handle('config:set', (_e, patch) => writeConfig(patch))
+
+  // 窗口控制（无边框三色球按钮）
+  ipcMain.handle('window:minimize', (e) => BrowserWindow.fromWebContents(e.sender)?.minimize())
+  ipcMain.handle('window:maximize-toggle', (e) => {
+    const win = BrowserWindow.fromWebContents(e.sender)
+    if (!win) return
+    if (win.isMaximized()) win.unmaximize()
+    else win.maximize()
+    return win.isMaximized()
+  })
+  ipcMain.handle('window:close', (e) => BrowserWindow.fromWebContents(e.sender)?.close())
 
   // 品牌信息
   ipcMain.handle('app:meta', () => ({

@@ -11,6 +11,12 @@ contextBridge.exposeInMainWorld('miaokeda', {
   // 配置读写
   configGet: () => ipcRenderer.invoke('config:get'),
   configSet: (patch) => ipcRenderer.invoke('config:set', patch),
+  // 窗口控制（无边框三色球）
+  window: {
+    minimize: () => ipcRenderer.invoke('window:minimize'),
+    maximizeToggle: () => ipcRenderer.invoke('window:maximize-toggle'),
+    close: () => ipcRenderer.invoke('window:close'),
+  },
   // 云端 API 配置
   cloud: {
     baseUrl: cloudConfig.CLOUD_API_BASE,
