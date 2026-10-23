@@ -14,7 +14,10 @@ const APP_VERSION = app.getVersion()
 // 便携化：--portable 启动时，将 userData 放到程序所在文件夹旁的 data 目录，
 // 使整个文件夹拷入 U 盘即开即用，设置/历史/缓存全部跟着走，不写系统安装目录。
 // ---------------------------------------------------------------------------
-const isPortable = process.argv.includes('--portable')
+// 便携模式：--portable 参数 或 便携版单 exe（PORTABLE_EXECUTABLE_DIR）或 Linux AppImage
+const isPortable = process.argv.includes('--portable') ||
+  !!process.env.PORTABLE_EXECUTABLE_DIR ||
+  !!process.env.APPIMAGE
 
 function getPortableBaseDir() {
   // Windows 便携版：electron-builder portable target 注入的可执行文件目录

@@ -62,11 +62,13 @@ jobs:
         shell: bash
         run: |
           cd dist
-          EXE=$(ls *.exe 2>/dev/null | head -1)
-          if [ -n "$EXE" ]; then
-            DATE=$(date +%y%m%d)
-            mv "$EXE" "MiaoKeDaEC_${DATE}_x64_1.0.0.exe"
-          fi
+          DATE=$(date +%y%m%d)
+          for f in *.exe; do
+            case "$f" in
+              *Setup*) mv "$f" "喵科大EC_Setup_1.0.0.exe" ;;
+              *) mv "$f" "MiaoKeDaEC_${DATE}_x64_1.0.0.exe" ;;
+            esac
+          done
           ls -la
 
       - name: Rename artifact (Linux)

@@ -11,7 +11,7 @@
     "start:portable": "electron . --portable",
     "pack:linux": "bash scripts/build-linux.sh",
     "pack:win": "bash scripts/build-win.sh",
-    "build:win": "electron-builder --win portable --x64",
+    "build:win": "electron-builder --win portable nsis --x64",
     "build:linux": "electron-builder --linux AppImage --x64"
   },
   "dependencies": {
@@ -35,10 +35,25 @@
       "package.json"
     ],
     "win": {
-      "target": "portable",
+      "target": [
+        "portable",
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
       "icon": "assets/icon.ico",
       "sign": false,
       "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "喵科大EC",
+      "artifactName": "喵科大EC_Setup_${version}.exe"
     },
     "linux": {
       "target": "AppImage",
