@@ -118,7 +118,7 @@ function createWindow() {
       if (process.env.MIAOKEDA_DEMO_PANEL === 'warp') {
         // t=2s 打开 WARP 面板
         run(2000, `document.getElementById('btnWarp').click()`)
-        setTimeout(() => app.quit(), 8000)
+        setTimeout(() => app.quit(), 60000)
       } else {
         // t=2s 打开云端登录面板
         run(2000, `document.getElementById('btnCloud').click()`)
