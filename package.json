@@ -53,7 +53,13 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "喵科大EC",
-      "artifactName": "喵科大EC_Setup_${version}.exe"
+      "artifactName": "喵科大EC_Setup_${version}.exe",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "installerSidebar": "build/nsis/sidebar.bmp",
+      "uninstallerSidebar": "build/nsis/sidebar.bmp",
+      "include": "build/nsis/installer.nsh"
     },
     "linux": {
       "target": "AppImage",
