@@ -61,13 +61,19 @@ jobs:
         if: matrix.platform == 'win'
         shell: bash
         run: |
-          cd dist
+          # 从 package.json 动态取版本，避免硬编码
+          VER=$(node -p "require('./package.json').version")
           DATE=$(date +%y%m%d)
+          cd dist
           for f in *.exe; do
             case "$f" in
-              *Setup*) mv "$f" "喵科大EC_Setup_1.0.0.exe" ;;
-              *) mv "$f" "MiaoKeDaEC_${DATE}_x64_1.0.0.exe" ;;
+              *Setup*) target="喵科大EC_Setup_${VER}.exe" ;;
+              *) target="MiaoKeDaEC_${DATE}_x64_${VER}.exe" ;;
             esac
+            # 源与目标同名时跳过，避免 mv "same file" 报错
+            if [ "$f" != "$target" ]; then
+              mv "$f" "$target"
+            fi
           done
           ls -la
 
